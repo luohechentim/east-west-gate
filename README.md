@@ -2,7 +2,25 @@
 
 [简体中文](README.zh-CN.md) · [Configuration](docs/CONFIGURATION.md) · [Security](SECURITY.md) · [Contributing](CONTRIBUTING.md)
 
+[![CI](https://github.com/luohechentim/east-west-gate/actions/workflows/ci.yml/badge.svg)](https://github.com/luohechentim/east-west-gate/actions/workflows/ci.yml)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+
 **Evidence-aware review panels, artifact verification, quality gates, and repair verification for AI-assisted work.**
+
+Double Gate is a deterministic two-gate review and repair loop for LLM and agent outputs: first establish what the panel actually concluded, then verify the artifacts and delivery conditions before a human decides what ships.
+
+### 30 seconds to understand
+
+```text
+proposal / report / code change
+        │
+        ├─ Gate 1: panel review + convergence adjudication
+        ├─ Gate 2: cited-artifact guard + six delivery gates
+        └─ repair checklist → independent re-review → human release decision
+```
+
+It is deliberately conservative: the built-in offline panel is a deterministic simulation for local development, not independent expert assurance. A real multi-provider panel produces evidence for human judgment; it never proves that a result is correct.
 
 Double Gate helps an agent or team make review claims that can be inspected rather than merely asserted. It combines deterministic adjudication with explicit evidence boundaries:
 
@@ -30,6 +48,17 @@ python -m pip install -e ".[dev]"
 ```
 
 The package supports Python 3.10+.
+
+## 3-minute local evaluation
+
+```bash
+git clone https://github.com/luohechentim/east-west-gate.git
+cd east-west-gate
+python -m pip install -e ".[dev]"
+python examples/demo_offline.py
+```
+
+Then try the CLI against your own proposal:
 
 ## Quick start: offline workflow
 
@@ -169,6 +198,19 @@ The artifact guard checks whether a cited file, API, import, symbol, or field ca
 ## Agent skill
 
 The repository includes [skills/double-gate/SKILL.md](skills/double-gate/SKILL.md) for agent environments that support skill folders. It is a workflow guide; the versioned Python code in `src/double_gate/` remains the executable source of truth.
+
+## Why this is different
+
+- **Deterministic decisions:** panel votes, evidence states, and gate outcomes are explicit JSON rather than prose-only conclusions.
+- **Bounded evidence:** cited paths are checked only inside the approved `--root` boundary; no arbitrary host-path probing.
+- **Repair is a loop:** a finding is not “fixed” merely because it disappeared from one response; verification also considers re-review assurance and verdict quality.
+- **CI-friendly:** zero mandatory runtime dependencies, a stable CLI, offline fixtures, and machine-readable reports.
+
+For the complete release boundary and known limitations, see [CHANGELOG.md](CHANGELOG.md) and [docs/RELEASE_CHECKLIST.md](docs/RELEASE_CHECKLIST.md).
+
+## Cite or reference Double Gate
+
+If Double Gate is useful in a paper, benchmark, internal standard, or public tool, please use the metadata in [CITATION.cff](CITATION.cff) and link to the repository: <https://github.com/luohechentim/east-west-gate>.
 
 ## Development
 

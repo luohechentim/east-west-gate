@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+title: "Double Gate"
+message: "If you use Double Gate in a publication, benchmark, internal standard, or public tool, please cite this software."
+type: software
+authors:
+  - family-names: "An"
+    given-names: "Luohe"
+repository-code: "https://github.com/luohechentim/east-west-gate"
+url: "https://github.com/luohechentim/east-west-gate"
+license: "MIT"
+version: "0.3.0"
+date-released: "2026-08-08"

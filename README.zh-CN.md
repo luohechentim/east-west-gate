@@ -2,7 +2,25 @@
 
 [English](README.md) · [配置说明](docs/CONFIGURATION.md) · [安全政策](SECURITY.md) · [贡献指南](CONTRIBUTING.md)
 
+[![CI](https://github.com/luohechentim/east-west-gate/actions/workflows/ci.yml/badge.svg)](https://github.com/luohechentim/east-west-gate/actions/workflows/ci.yml)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+
 **面向 AI 辅助工作流的、可追溯的评审面板、引用核验、质量闸门与修复闭环。**
+
+Double Gate 是一个确定性的“双闸门”评审与修复工作流：先确认评审面板实际得出了什么结论，再核验工件与交付条件，最后由人决定是否发布。
+
+### 30 秒理解
+
+```text
+提案 / 报告 / 代码变更
+        │
+        ├─ 闸门 1：面板评审 + 收敛裁决
+        ├─ 闸门 2：引用工件守卫 + 六道交付闸门
+        └─ 修复清单 → 独立复审 → 人工发布决定
+```
+
+内置离线面板是用于本地开发的确定性模拟，不是独立专家保证；真实多供应商面板只能提供供人判断的证据，不会证明结果一定正确。
 
 Double Gate 的目标不是“再让一个模型说一遍”，而是把评审结论拆成可检查的证据：谁评审了、哪些结论收敛、引用的文件/API/符号是否真的存在、哪些问题还必须由人决定。
 
@@ -23,7 +41,10 @@ Double Gate 的目标不是“再让一个模型说一遍”，而是把评审�
 ## 安装与离线试跑
 
 ```bash
+git clone https://github.com/luohechentim/east-west-gate.git
+cd east-west-gate
 python -m pip install -e ".[dev]"
+python examples/demo_offline.py
 
 double-gate review proposal.md --risk low --offline --root .
 double-gate gates proposal.md --risk low --context examples/gates-context.json --fail-on-failure
@@ -62,6 +83,15 @@ report = repair.verify_fixed(second, checklist)
 ```
 
 `all_findings_absent` 只表示旧问题没有在复审中再次出现；`all_resolved` 还要求足够的独立复审保证和可接受的复审结论。
+
+## 为什么值得使用
+
+- **确定性结果：** 投票、证据状态和闸门结果都输出为明确 JSON，而不是只有一段解释性文字。
+- **有边界的核验：** 引用路径只在指定的 `--root` 内检查，不探测任意本机路径。
+- **修复是闭环：** 问题从一次回答中消失，不等于已经解决；还要看复审保证与复审结论。
+- **适合 CI：** 无强制运行时依赖，提供稳定 CLI、离线夹具和机器可读报告。
+
+如需引用或集成 Double Gate，请参阅 [CITATION.cff](CITATION.cff)；完整发布边界见 [docs/RELEASE_CHECKLIST.md](docs/RELEASE_CHECKLIST.md)。
 
 ## 开源发布前
 
