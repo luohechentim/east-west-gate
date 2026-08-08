@@ -1,0 +1,13 @@
+{
+  "risk_level": "low",
+  "data": {
+    "records": 120,
+    "null_fields": 0,
+    "source": "example-only"
+  },
+  "delivery": {
+    "recipient": "review-board",
+    "subject": "Double Gate example output",
+    "signature": "Example team"
+  }
+}

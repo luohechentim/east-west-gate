@@ -1,0 +1,31 @@
+name: Bug report
+description: Report a reproducible defect in Double Gate.
+title: "bug: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please remove API keys, private prompts, customer content, and local paths before submitting.
+  - type: input
+    id: version
+    attributes:
+      label: Double Gate version
+      placeholder: "0.3.0"
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Include commands, code, and expected versus actual behavior.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Python version, OS, installation method, and relevant non-secret configuration.
+    validations:
+      required: true
