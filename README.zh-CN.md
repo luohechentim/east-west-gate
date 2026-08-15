@@ -6,6 +6,8 @@
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
+![Double Gate：面向 AI 辅助工作的证据化评审](docs/assets/social-preview.png)
+
 **面向 AI 辅助工作流的、可追溯的评审面板、引用核验、质量闸门与修复闭环。**
 
 Double Gate 是一个确定性的“双闸门”评审与修复工作流：先确认评审面板实际得出了什么结论，再核验工件与交付条件，最后由人决定是否发布。
