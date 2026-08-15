@@ -2,7 +2,7 @@
 layout: default
 title: Double Gate — Evidence-aware review for AI-assisted work
 description: A deterministic two-gate review and repair workflow with bounded artifact verification, explicit delivery gates, and auditable JSON output.
-image: /east-west-gate/assets/social-preview.png
+image: /assets/social-preview.png
 ---
 
 ![Double Gate: evidence-aware review for AI-assisted work](assets/social-preview.png)
