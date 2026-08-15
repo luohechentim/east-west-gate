@@ -6,6 +6,8 @@
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
+![Double Gate: evidence-aware review for AI-assisted work](docs/assets/social-preview.png)
+
 **Evidence-aware review panels, artifact verification, quality gates, and repair verification for AI-assisted work.**
 
 Double Gate is a deterministic two-gate review and repair loop for LLM and agent outputs: first establish what the panel actually concluded, then verify the artifacts and delivery conditions before a human decides what ships.
