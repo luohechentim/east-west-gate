@@ -1,0 +1,10 @@
+title: Double Gate
+description: Evidence-aware review panels, artifact verification, quality gates, and repair verification for AI-assisted work.
+url: https://luohechentim.github.io
+baseurl: /east-west-gate
+theme: jekyll-theme-cayman
+plugins:
+  - jekyll-seo-tag
+github:
+  repository_url: https://github.com/luohechentim/east-west-gate
+  releases_url: https://github.com/luohechentim/east-west-gate/releases
