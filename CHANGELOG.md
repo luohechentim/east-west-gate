@@ -2,6 +2,13 @@
 
 All notable changes to this project are documented in this file.
 
+## 0.3.1 — 2026-08-15
+
+- Updated the GitHub Actions toolchain to `actions/checkout@v7`,
+  `actions/setup-python@v7`, and `actions/upload-artifact@v7`.
+- Kept the supported Python 3.10–3.13 test matrix and distribution verification unchanged.
+- Synchronized package, runtime, citation, and issue-template version metadata.
+
 ## 0.3.0 — 2026-08-08
 
 - Corrected the hallucination guard to inspect reviewer output rather than the submitted source text.
